@@ -1,23 +1,32 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <button @click="fetchDoggos">Fetch dogggos</button>
-    <div>{{ doggos.length }}</div>
-    <div v-for="doggo in doggos" :key="doggo">
-      <img :src="doggo" />
+    <div class="home__header">
+      <Title text="Welcome to Dogemory!" color="white" />
+      <div class="home__subtitle">
+        <Subtitle text="Stretch your brain with your favorite doggos 🐶" color="white" />
+      </div>
     </div>
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <div class="home__doge">
+      <Doge />
+    </div>
+    <Button text="Get started!" large />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import Button from "@/components/Button.vue";
+import Title from "@/components/Title.vue";
+import Subtitle from "@/components/Subtitle.vue";
+import Doge from "@/components/Doge.vue";
 
 export default {
   name: "Home",
   components: {
-    HelloWorld
+    Button,
+    Title,
+    Subtitle,
+    Doge
   },
   computed: {
     doggos() {
@@ -34,3 +43,21 @@ export default {
   }
 };
 </script>
+
+<style scoped lang="scss">
+.home {
+  &__header {
+    background: $blue;
+    padding: 30px 20px;
+    margin-bottom: 70px;
+  }
+
+  &__subtitle {
+    padding-top: 10px;
+  }
+
+  &__doge {
+    margin-bottom: 80px;
+  }
+}
+</style>

@@ -1,0 +1,25 @@
+@import "./variables";
+
+body {
+  font-size: 15px;
+  box-sizing: border-box;
+  margin: 0;
+  background: $bg;
+  font-family: 'Lato', sans-serif;
+}
+
+.row {
+  max-width: 1150px;
+  margin: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}

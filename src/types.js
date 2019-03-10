@@ -1,6 +1,8 @@
-export const FETCH_DOGGOS = "FETCH_DOGGOS";
-
 export const START_NEW_GAME = "START_NEW_GAME";
+
+export const FETCH_BREEDS = "FETCH_DOGGOS";
+
+export const FETCH_DOGGOS = "FETCH_DOGGOS";
 
 export const PREPARE_PAIRS = "PREPARE_PAIRS";
 
