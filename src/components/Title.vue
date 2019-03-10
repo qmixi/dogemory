@@ -6,8 +6,14 @@
 export default {
   name: "Title",
   props: {
-    text: String,
-    color: String
+    text: {
+      type: String,
+      default: ""
+    },
+    color: {
+      type: String,
+      default: ""
+    }
   }
 };
 </script>

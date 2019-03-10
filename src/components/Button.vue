@@ -6,8 +6,15 @@
 export default {
   name: "Button",
   props: {
-    text: String,
-    large: Boolean
+    text: {
+      type: String,
+      default: ""
+    },
+    large: Boolean,
+    onClick: {
+      type: Function,
+      default: () => {}
+    }
   }
 };
 </script>
@@ -24,6 +31,7 @@ export default {
   box-shadow: 0px 3px 25px 5px #2e73ff73;
   cursor: pointer;
   transition: all 0.2s ease-out;
+  outline: none;
 
   &--large {
     padding: 12px 85px;
