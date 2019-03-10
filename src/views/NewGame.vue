@@ -1,5 +1,53 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="new-game">
+    <div class="new-game__header">
+      <Title text="New Game!" color="white" />
+      <div class="new-game__subtitle">
+        <Subtitle
+          text="Add players, set pairs amount and choose your favorite breed 🎉"
+          color="white"
+        />
+      </div>
+    </div>
+    <div class="new-game__form">
+      <NewGameForm />
+    </div>
   </div>
 </template>
+
+<script>
+import Title from "@/components/Title.vue";
+import Subtitle from "@/components/Subtitle.vue";
+import NewGameForm from "@/components/NewGameForm.vue";
+
+export default {
+  name: "Home",
+  components: {
+    Title,
+    Subtitle,
+    NewGameForm
+  }
+};
+</script>
+
+<style scoped lang="scss">
+.new-game {
+  &__header {
+    background: $blue;
+    padding: 30px 20px 130px 20px;
+  }
+
+  &__subtitle {
+    padding-top: 10px;
+  }
+
+  &__doge {
+    margin-bottom: 80px;
+  }
+
+  &__form {
+    position: relative;
+    top: -85px;
+  }
+}
+</style>

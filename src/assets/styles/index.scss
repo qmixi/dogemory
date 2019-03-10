@@ -23,3 +23,22 @@ ul {
   padding: 0;
   list-style-type: none;
 }
+
+.vue-slider .vue-slider-dot-handle, .vue-slider:hover .vue-slider-dot-handle {
+  border: 2px solid $blue;
+}
+
+.vue-slider .vue-slider-mark-step-active, .vue-slider:hover .vue-slider-mark-step-active {
+  -webkit-box-shadow: 0 0 0 2px $blue;
+  box-shadow: 0 0 0 2px $blue;
+}
+
+.vue-slider-process, .vue-slider:hover .vue-slider-process {
+  background-color: $blue;
+}
+
+.v-select.searchable .dropdown-toggle {
+  cursor: text;
+  border-radius: 20px;
+  border: 2px solid whitesmoke;
+} 

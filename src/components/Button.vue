@@ -1,5 +1,5 @@
 <template>
-  <button class="button" :class="{ 'button--large': large }">{{ text }}</button>
+  <button class="button" :class="{ 'button--large': large }" @click="onClick">{{ text }}</button>
 </template>
 
 <script>

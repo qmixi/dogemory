@@ -17,11 +17,16 @@ export default new Vuex.Store({
       pairs: [],
       matchedPairs: [],
       isFinished: false
-    }
+    },
+    breeds: []
   },
   mutations: {
     FETCH_DOGGOS(state, doggos) {
       state.game.pairs = doggos;
+    },
+    SET_BREEDS(state, breeds) {
+      console.log("Object.keys(breeds)", Object.keys(breeds));
+      state.breeds = Object.keys(breeds);
     }
   },
   actions: {
@@ -33,7 +38,7 @@ export default new Vuex.Store({
     async fetchBreeds({ commit }) {
       const res = await axios.get("https://dog.ceo/api/breeds/list/all");
       console.log("breeds", res.data);
-      commit("FETCH_DOGGOS", res.data.message);
+      commit("SET_BREEDS", res.data.message);
     },
     async fetchDoggosByBreed({ commit }, breed) {
       console.log("breed1", breed);

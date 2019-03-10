@@ -9,12 +9,11 @@
     <div class="home__doge">
       <Doge />
     </div>
-    <Button text="Get started!" large />
+    <Button text="Get started!" :on-click="newGame" large />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import Button from "@/components/Button.vue";
 import Title from "@/components/Title.vue";
 import Subtitle from "@/components/Subtitle.vue";
@@ -28,17 +27,9 @@ export default {
     Subtitle,
     Doge
   },
-  computed: {
-    doggos() {
-      return this.$store.state.game.pairs;
-    }
-  },
   methods: {
-    fetchDoggos() {
-      console.log("this", this);
-      this.$store.dispatch("fetchRandomDoggos");
-      this.$store.dispatch("fetchBreeds");
-      this.$store.dispatch("fetchDoggosByBreed", "labrador");
+    newGame() {
+      this.$router.push({ name: "new" });
     }
   }
 };
