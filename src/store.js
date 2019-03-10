@@ -6,17 +6,39 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    doggos: []
+    settings: {
+      users: 0,
+      pairs: 8,
+      breed: "random"
+    },
+    game: {
+      currentUser: 1,
+      scores: [],
+      pairs: [],
+      matchedPairs: [],
+      isFinished: false
+    }
   },
   mutations: {
     FETCH_DOGGOS(state, doggos) {
-      state.doggos = doggos;
+      state.game.pairs = doggos;
     }
   },
   actions: {
-    async fetchDoggos({ commit }) {
-      const res = await axios.get("https://dog.ceo/api/breed/hound/images/random/20");
+    async fetchRandomDoggos({ commit }) {
+      const res = await axios.get("https://dog.ceo/api/breeds/image/random/20");
       console.log("dogs", res.data);
+      commit("FETCH_DOGGOS", res.data.message);
+    },
+    async fetchBreeds({ commit }) {
+      const res = await axios.get("https://dog.ceo/api/breeds/list/all");
+      console.log("breeds", res.data);
+      commit("FETCH_DOGGOS", res.data.message);
+    },
+    async fetchDoggosByBreed({ commit }, breed) {
+      console.log("breed1", breed);
+      const res = await axios.get(`https://dog.ceo/api/breed/${breed}/images/random/20`);
+      console.log("breed doggo", res.data);
       commit("FETCH_DOGGOS", res.data.message);
     }
   }

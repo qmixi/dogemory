@@ -21,13 +21,15 @@ export default {
   },
   computed: {
     doggos() {
-      return this.$store.state.doggos;
+      return this.$store.state.game.pairs;
     }
   },
   methods: {
     fetchDoggos() {
       console.log("this", this);
-      this.$store.dispatch("fetchDoggos");
+      this.$store.dispatch("fetchRandomDoggos");
+      this.$store.dispatch("fetchBreeds");
+      this.$store.dispatch("fetchDoggosByBreed", "labrador");
     }
   }
 };
