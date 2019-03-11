@@ -15,13 +15,14 @@
     <div class="new-form__stage">
       <label class="new-form__label">Breed:</label>
       <div class="new-form__item">
-        <v-select v-model="breed" :options="breeds"></v-select>
+        <v-select v-model="breed" :options="breeds" :clearable="false"></v-select>
       </div>
     </div>
     <div class="new-form__submit">
-      <Button text="Start game" large />
+      <Button text="Start game" @click="onGameStart" large />
     </div>
-    {{ breeds.length }}
+
+    {{breeds.length}}
   </div>
 </template>
 
@@ -42,12 +43,17 @@ export default {
     return {
       players: 1,
       pairs: 8,
-      breed: ""
+      breed: "Random"
     };
   },
-  computed: {
-    breeds() {
-      return this.$store.breeds || [];
+  props: {
+    breeds: {
+      type: Array,
+      default: () => []
+    },
+    onGameStart: {
+      type: Function,
+      default: () => {}
     }
   },
   beforeMount() {

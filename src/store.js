@@ -18,15 +18,14 @@ export default new Vuex.Store({
       matchedPairs: [],
       isFinished: false
     },
-    breeds: []
+    breeds: ["Random"]
   },
   mutations: {
     FETCH_DOGGOS(state, doggos) {
       state.game.pairs = doggos;
     },
     SET_BREEDS(state, breeds) {
-      console.log("Object.keys(breeds)", Object.keys(breeds));
-      state.breeds = Object.keys(breeds);
+      state.breeds = [...state.breeds, ...Object.keys(breeds)];
     }
   },
   actions: {

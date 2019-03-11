@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="new-game__form">
-      <NewGameForm />
+      <NewGameForm  breeds={breeds} :on-game-start="onGameStart"/>
     </div>
   </div>
 </template>
@@ -26,7 +26,19 @@ export default {
     Title,
     Subtitle,
     NewGameForm
-  }
+  },
+  computed: {
+    breeds() {
+      console.log('this.$store.state.breeds', this.$store.state.breeds)
+      return this.$store.state.breeds || [];
+    }
+  },
+  methods: {
+    onGameStart() {
+      this.$router.push({ name: "new" });
+    
+    }
+  },
 };
 </script>
 
