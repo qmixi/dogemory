@@ -54,7 +54,9 @@ export default new Vuex.Store({
       if (settings.breed === "Random") {
         res = await axios.get(`https://dog.ceo/api/breeds/image/random/${settings.pairs}`);
       } else {
-        res = await axios.get(`https://dog.ceo/api/breed/${breed}/images/random/${settings.pairs}`);
+        res = await axios.get(
+          `https://dog.ceo/api/breed/${settings.breed}/images/random/${settings.pairs}`
+        );
       }
       commit(SET_PAIRS, res.data.message);
     },
