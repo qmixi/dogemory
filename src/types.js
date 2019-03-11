@@ -1,6 +1,14 @@
-export const START_NEW_GAME = "START_NEW_GAME";
+export const INITIALIZE_NEW_GAME = "INITIALIZE_NEW_GAME";
 
 export const FETCH_BREEDS = "FETCH_DOGGOS";
+
+export const SET_BREEDS = "FETCH_DOGGOS";
+
+export const START_NEW_GAME = "START_NEW_GAME";
+
+export const SET_PAIRS = "SET_PAIRS";
+
+export const SET_SETTINGS = "SET_SETTINGS";
 
 export const FETCH_DOGGOS = "FETCH_DOGGOS";
 

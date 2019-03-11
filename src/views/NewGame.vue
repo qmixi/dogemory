@@ -4,13 +4,13 @@
       <Title text="New Game!" color="white" />
       <div class="new-game__subtitle">
         <Subtitle
-          text="Add players, set pairs amount and choose your favorite breed 🎉"
+          text="Add players, set number of pairs and choose your favorite breed 🎉"
           color="white"
         />
       </div>
     </div>
     <div class="new-game__form">
-      <NewGameForm  breeds={breeds} :on-game-start="onGameStart"/>
+      <NewGameForm :breeds="breeds" :on-game-start="onGameStart" />
     </div>
   </div>
 </template>
@@ -19,6 +19,8 @@
 import Title from "@/components/Title.vue";
 import Subtitle from "@/components/Subtitle.vue";
 import NewGameForm from "@/components/NewGameForm.vue";
+
+import { FETCH_BREEDS, START_NEW_GAME } from "@/types";
 
 export default {
   name: "Home",
@@ -29,16 +31,18 @@ export default {
   },
   computed: {
     breeds() {
-      console.log('this.$store.state.breeds', this.$store.state.breeds)
       return this.$store.state.breeds || [];
     }
   },
-  methods: {
-    onGameStart() {
-      this.$router.push({ name: "new" });
-    
-    }
+  beforeMount() {
+    this.$store.dispatch(FETCH_BREEDS);
   },
+  methods: {
+    onGameStart(players, pairs, breed) {
+      this.$store.dispatch(START_NEW_GAME, { players, pairs, breed });
+      this.$router.push({ name: "board" });
+    }
+  }
 };
 </script>
 

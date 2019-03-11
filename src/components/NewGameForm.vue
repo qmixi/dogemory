@@ -1,13 +1,13 @@
 <template>
   <div class="new-form">
     <div class="new-form__stage">
-      <label class="new-form__label">Users:</label>
+      <label class="new-form__label">Players:</label>
       <div class="new-form__item">
         <vue-slider v-model="players" :data="['1', '2', '3', '4']" :marks="true" />
       </div>
     </div>
     <div class="new-form__stage">
-      <label class="new-form__label">Cards:</label>
+      <label class="new-form__label">Pairs:</label>
       <div class="new-form__item">
         <vue-slider v-model="pairs" :min="8" :max="30" :interval="2" :marks="true" />
       </div>
@@ -15,14 +15,17 @@
     <div class="new-form__stage">
       <label class="new-form__label">Breed:</label>
       <div class="new-form__item">
-        <v-select v-model="breed" :options="breeds" :clearable="false"></v-select>
+        <v-select
+          v-model="breed"
+          :options="breeds"
+          :clearable="false"
+          max-height="200px"
+        ></v-select>
       </div>
     </div>
     <div class="new-form__submit">
-      <Button text="Start game" @click="onGameStart" large />
+      <Button text="Start game" large :on-click="startGame" />
     </div>
-
-    {{breeds.length}}
   </div>
 </template>
 
@@ -39,13 +42,6 @@ export default {
     VSelect,
     Button
   },
-  data() {
-    return {
-      players: 1,
-      pairs: 8,
-      breed: "Random"
-    };
-  },
   props: {
     breeds: {
       type: Array,
@@ -56,8 +52,17 @@ export default {
       default: () => {}
     }
   },
-  beforeMount() {
-    this.$store.dispatch("fetchBreeds");
+  data() {
+    return {
+      players: 1,
+      pairs: 8,
+      breed: "Random"
+    };
+  },
+  methods: {
+    startGame() {
+      this.onGameStart(this.players, this.pairs, this.breed);
+    }
   }
 };
 </script>

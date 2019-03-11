@@ -42,3 +42,11 @@ ul {
   border-radius: 20px;
   border: 2px solid whitesmoke;
 } 
+
+
+.v-select.searchable .dropdown-menu {
+  border-radius: 10px;
+  border: 1px solid whitesmoke;
+  box-shadow: 0 0 20px 4px rgba(255, 255, 255, .2);
+  max-height: 20px;
+}

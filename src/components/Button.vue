@@ -23,7 +23,7 @@ export default {
 .button {
   text-align: center;
   border: 0px solid transparent;
-  color: white;
+  color: $text-button;
   padding: 5px 25px;
   border-radius: 20px;
   font-size: 16px;
@@ -41,6 +41,7 @@ export default {
 
   &:hover {
     box-shadow: 0px 3px 15px 4px #2e73ff73;
+    color: white;
   }
 }
 </style>
