@@ -1,9 +1,25 @@
 <template>
   <div class="nav">
-    <div class="nav__logo">Dogemory</div>
-    <div class="nav__new-game">New Game</div>
+    <div class="nav__logo">
+      <router-link to="/">Dogemory</router-link>
+    </div>
+    <div class="nav__new-game" @click="setNewGame">New Game</div>
   </div>
 </template>
+
+<script>
+import { INITIALIZE_NEW_GAME } from "@/types";
+
+export default {
+  name: "Nav",
+  methods: {
+    setNewGame() {
+      this.$store.dispatch(INITIALIZE_NEW_GAME);
+      this.$router.push({ name: "new" });
+    }
+  }
+};
+</script>
 
 <style lang="scss">
 .nav {
