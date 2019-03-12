@@ -1,6 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
+import { uniqueId, shuffle } from "lodash";
+
 import {
   FETCH_BREEDS,
   SET_BREEDS,
@@ -15,7 +17,7 @@ Vue.use(Vuex);
 const initialSettings = {
   users: 0,
   pairs: 8,
-  breed: "random"
+  breed: "Random"
 };
 
 const initialGame = {
@@ -58,7 +60,17 @@ export default new Vuex.Store({
           `https://dog.ceo/api/breed/${settings.breed}/images/random/${settings.pairs}`
         );
       }
-      commit(SET_PAIRS, res.data.message);
+
+      // generate pairs
+      const images = res.data.message;
+      const data = images.map(img => ({
+        id: uniqueId(),
+        img
+      }));
+      const pairs = shuffle([...data, ...data]);
+      console.log("pairs", pairs);
+
+      commit(SET_PAIRS, pairs);
     },
     async [FETCH_BREEDS]({ commit }) {
       const res = await axios.get("https://dog.ceo/api/breeds/list/all");

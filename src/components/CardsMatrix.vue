@@ -1,6 +1,17 @@
 <template>
   <div class="cards">
-    <div v-for="card in cards" :key="card"></div>
+    <div
+      v-for="(card, index) in cards"
+      :key="`card-${index}`"
+      class="card"
+      :class="{ flipped: selected.includes(index) }"
+      @click="() => selectCard(index)"
+    >
+      <div class="card__flipper">
+        <div class="card__placeholder">Dogemory</div>
+        <div class="card__img" :style="{ 'background-image': `url('${card.img}')` }" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -10,8 +21,18 @@ export default {
   components: {},
   props: {
     cards: {
-      default: () => [],
-      type: Array
+      type: Array,
+      default: () => []
+    }
+  },
+  data() {
+    return {
+      selected: []
+    };
+  },
+  methods: {
+    selectCard(id) {
+      this.selected.push(id);
     }
   }
 };
@@ -19,5 +40,62 @@ export default {
 
 <style scoped lang="scss">
 .cards {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: repeat(auto-fill, 125px);
+  max-width: 590px;
+  margin: auto;
+  padding: 30px 0;
+  position: relative;
+  top: -100px;
+}
+
+.card {
+  -webkit-perspective: 1000;
+  box-shadow: 0px 0px 61px 6px rgba(100, 100, 100, 0.17);
+  background: rgba(100, 100, 100, 0.1);
+}
+
+.card.flipped .card__flipper {
+  -webkit-transform: rotateY(180deg);
+}
+
+.card,
+.card__placeholder,
+.card__img {
+  width: 125px;
+  height: 125px;
+}
+
+.card__flipper {
+  -webkit-transition: 0.6s;
+  -webkit-transform-style: preserve-3d;
+  position: relative;
+}
+
+.card__placeholder,
+.card__img {
+  -webkit-backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.card__placeholder {
+  z-index: 2;
+  background: white;
+  color: $blue;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: "Montserrat", Helvetica, Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__img {
+  -webkit-transform: rotateY(180deg);
+  background-size: cover;
+  background-position: center;
 }
 </style>
