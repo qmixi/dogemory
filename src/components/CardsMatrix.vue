@@ -4,8 +4,8 @@
       v-for="(card, index) in cards"
       :key="`card-${index}`"
       class="card"
-      :class="{ flipped: selected.includes(index) }"
-      @click="() => selectCard(index)"
+      :class="{ flipped: isFlipped(index, card.id) }"
+      @click="() => onCardSelect(index)"
     >
       <div class="card__flipper">
         <div class="card__placeholder">Dogemory</div>
@@ -23,6 +23,14 @@ export default {
     cards: {
       type: Array,
       default: () => []
+    },
+    isFlipped: {
+      type: Function,
+      default: () => false
+    },
+    onCardSelect: {
+      type: Function,
+      default: () => {}
     }
   },
   data() {
@@ -30,11 +38,7 @@ export default {
       selected: []
     };
   },
-  methods: {
-    selectCard(id) {
-      this.selected.push(id);
-    }
-  }
+  methods: {}
 };
 </script>
 
@@ -54,6 +58,7 @@ export default {
   -webkit-perspective: 1000;
   box-shadow: 0px 0px 61px 6px rgba(100, 100, 100, 0.17);
   background: rgba(100, 100, 100, 0.1);
+  cursor: pointer;
 }
 
 .card.flipped .card__flipper {

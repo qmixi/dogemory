@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     startGame() {
-      this.onGameStart(this.players, this.pairs, this.breed);
+      this.onGameStart(parseInt(this.players, 10), this.pairs, this.breed);
     }
   }
 };

@@ -9,19 +9,22 @@ import {
   START_NEW_GAME,
   SET_PAIRS,
   INITIALIZE_NEW_GAME,
-  SET_SETTINGS
+  SET_SETTINGS,
+  SET_NEXT_PLAYER,
+  SET_MATCHED_PAIR,
+  INCREASE_CURRENT_PLAYER_SCORE
 } from "@/types";
 
 Vue.use(Vuex);
 
 const initialSettings = {
-  users: 0,
+  players: 0,
   pairs: 8,
   breed: "Random"
 };
 
 const initialGame = {
-  currentUser: 1,
+  currentPlayer: 1,
   scores: [],
   pairs: [],
   matchedPairs: [],
@@ -40,13 +43,29 @@ export default new Vuex.Store({
       state.game = initialGame;
     },
     [SET_SETTINGS](state, payload) {
-      state.game.settings = payload;
+      state.settings = payload;
+      state.game = { ...initialGame, scores: new Array(payload.players).fill(0) };
     },
     [SET_PAIRS](state, pairs) {
       state.game.pairs = pairs;
     },
     [SET_BREEDS](state, breeds) {
       state.breeds = [...state.breeds, ...Object.keys(breeds)];
+    },
+    [SET_MATCHED_PAIR](state, pairId) {
+      state.game.matchedPairs.push(pairId);
+    },
+    [SET_NEXT_PLAYER](state) {
+      const next = state.game.currentPlayer + 1;
+      const total = state.settings.players;
+      state.game.currentPlayer = next % total ? next % total : next;
+    },
+    [INCREASE_CURRENT_PLAYER_SCORE](state) {
+      const scores = [...state.game.scores];
+      const currentPlayerScoreIndex = state.game.currentPlayer - 1;
+      const newPlayerScore = ++scores[currentPlayerScoreIndex];
+      scores[currentPlayerScoreIndex] = newPlayerScore;
+      state.game.scores = scores;
     }
   },
   actions: {
@@ -68,7 +87,6 @@ export default new Vuex.Store({
         img
       }));
       const pairs = shuffle([...data, ...data]);
-      console.log("pairs", pairs);
 
       commit(SET_PAIRS, pairs);
     },
