@@ -62,9 +62,11 @@ export default new Vuex.Store({
       state.game.matchedPairs.push(pairId);
     },
     [SET_NEXT_PLAYER](state) {
-      const next = state.game.currentPlayer + 1;
-      const total = state.settings.players;
-      state.game.currentPlayer = next % total ? next % total : next;
+      const players = state.settings.players;
+      if (players > 1) {
+        const next = state.game.currentPlayer + 1;
+        state.game.currentPlayer = next % players ? next % players : next;
+      }
     },
     [INCREASE_CURRENT_PLAYER_SCORE](state) {
       const scores = [...state.game.scores];
