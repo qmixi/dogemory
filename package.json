@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "express": "^4.16.4",
     "lodash": "^4.17.11",
     "number-to-words": "^1.2.4",
     "vue": "^2.6.6",
