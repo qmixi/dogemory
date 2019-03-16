@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import VuexPersistence from "vuex-persist";
 import axios from "axios";
 import { uniqueId, shuffle } from "lodash";
 
@@ -16,6 +17,11 @@ import {
 } from "@/types";
 
 Vue.use(Vuex);
+
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage,
+  key: "dogemory_app_v1.0.0F"
+});
 
 const initialSettings = {
   players: 0,
@@ -94,5 +100,6 @@ export default new Vuex.Store({
       const res = await axios.get("https://dog.ceo/api/breeds/list/all");
       commit(SET_BREEDS, res.data.message);
     }
-  }
+  },
+  plugins: [vuexLocal.plugin]
 });
