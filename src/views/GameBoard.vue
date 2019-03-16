@@ -18,12 +18,7 @@ import GameHeader from "@/components/GameHeader";
 import CardsMatrix from "@/components/CardsMatrix";
 import Scores from "@/components/Scores";
 
-import {
-  START_NEW_GAME,
-  SET_NEXT_PLAYER,
-  INCREASE_CURRENT_PLAYER_SCORE,
-  SET_MATCHED_PAIR
-} from "@/types";
+import { SET_NEXT_PLAYER, INCREASE_CURRENT_PLAYER_SCORE, SET_MATCHED_PAIR } from "@/types";
 
 export default {
   name: "Home",
@@ -47,16 +42,9 @@ export default {
       return this.$store.state.game.scores.toString() || [].toString();
     }
   },
-  // beforeMount() {
-  //   this.$store.dispatch(START_NEW_GAME, {
-  //     players: 4,
-  //     pairs: 8,
-  //     breed: "Random"
-  //   });
-  // },
   methods: {
     selectCard(index) {
-      if (this.selectedCards.length < 2) {
+      if (this.selectedCards.length < 2 && !this.selectedCards.includes(index)) {
         this.selectedCards.push(index);
       }
 

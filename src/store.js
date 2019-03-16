@@ -87,7 +87,6 @@ export default new Vuex.Store({
           `https://dog.ceo/api/breed/${settings.breed}/images/random/${settings.pairs}`
         );
       }
-
       // generate pairs
       const images = res.data.message;
       const data = images.map(img => ({
