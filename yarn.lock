@@ -860,7 +860,7 @@
     eslint-import-resolver-webpack "^0.10.1"
     eslint-plugin-import "^2.14.0"
 
-"@vue/eslint-config-prettier@^3.5.0":
+"@vue/eslint-config-prettier@^4.0.1":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@vue/eslint-config-prettier/-/eslint-config-prettier-4.0.1.tgz#a036d0d2193c5c836542b35a3a7c35c4e1c68c97"
   dependencies:
