@@ -81,6 +81,7 @@ export default {
 .card__placeholder,
 .card__img {
   -webkit-backface-visibility: hidden;
+  user-select: none;
   position: absolute;
   top: 0;
   left: 0;
