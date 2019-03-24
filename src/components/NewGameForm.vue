@@ -9,7 +9,7 @@
     <div class="new-form__stage">
       <label class="new-form__label">Pairs:</label>
       <div class="new-form__item">
-        <vue-slider v-model="pairs" :min="8" :max="30" :interval="2" :marks="true" />
+        <vue-slider v-model="pairs" :min="4" :max="30" :interval="2" :marks="true" />
       </div>
     </div>
     <div class="new-form__stage">
@@ -55,7 +55,7 @@ export default {
   data() {
     return {
       players: 1,
-      pairs: 8,
+      pairs: 4,
       breed: "Random"
     };
   },

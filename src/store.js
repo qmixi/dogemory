@@ -25,7 +25,7 @@ const vuexLocal = new VuexPersistence({
 
 const initialSettings = {
   players: 0,
-  pairs: 8,
+  pairs: 4,
   breed: "Random"
 };
 

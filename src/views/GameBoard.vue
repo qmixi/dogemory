@@ -40,6 +40,9 @@ export default {
     },
     scores() {
       return this.$store.state.game.scores.toString() || [].toString();
+    },
+    totalPairsCount() {
+      return this.$store.state.settings.pairs;
     }
   },
   methods: {
@@ -79,6 +82,11 @@ export default {
     },
     setMatchedPair(pairId) {
       this.$store.commit(SET_MATCHED_PAIR, pairId);
+      if (this.matchedPairs.length === this.totalPairsCount) {
+        setTimeout(() => {
+          this.$router.push({ name: "summary" });
+        }, 1500);
+      }
     },
     isCardFlipped(index, id) {
       return this.matchedPairs.includes(id) || this.selectedCards.includes(index);
