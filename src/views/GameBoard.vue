@@ -44,24 +44,29 @@ export default {
   },
   methods: {
     selectCard(index) {
-      if (this.selectedCards.length < 2 && !this.selectedCards.includes(index)) {
+      if (this.selectedCards.length === 2) {
+        return;
+      } else if (this.selectedCards.length < 2 && !this.selectedCards.includes(index)) {
         this.selectedCards.push(index);
       }
 
       if (this.selectedCards.length === 2) {
-        const firstCard = this.cards[this.selectedCards[0]];
-        const secondCard = this.cards[this.selectedCards[1]];
-
-        if (firstCard.id === secondCard.id) {
-          this.setMatchedPair(firstCard.id);
-          this.increaseCurrentPlayerScore();
-        } else {
-          this.changePlayer();
-        }
-        setTimeout(() => {
-          this.clearSelectedCards();
-        }, 1000);
+        this.checkPair();
       }
+    },
+    checkPair() {
+      const firstCard = this.cards[this.selectedCards[0]];
+      const secondCard = this.cards[this.selectedCards[1]];
+
+      if (firstCard.id === secondCard.id) {
+        this.setMatchedPair(firstCard.id);
+        this.increaseCurrentPlayerScore();
+      } else {
+        this.changePlayer();
+      }
+      setTimeout(() => {
+        this.clearSelectedCards();
+      }, 1000);
     },
     clearSelectedCards() {
       this.selectedCards = [];
