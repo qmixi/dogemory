@@ -45,10 +45,9 @@ export default {
 <style scoped lang="scss">
 .cards {
   display: grid;
-  grid-gap: 30px;
+  grid-gap: 25px;
   grid-template-columns: repeat(auto-fill, 125px);
-  max-width: 590px;
-  margin: auto;
+  margin-left: 250px;
   padding: 30px 0;
   position: relative;
   top: -100px;

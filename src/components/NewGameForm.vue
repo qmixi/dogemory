@@ -74,6 +74,7 @@ export default {
   background: white;
   padding: 30px;
   text-align: left;
+  box-shadow: 0px 0px 61px 6px rgba(100, 100, 100, 0.17);
 
   &__stage {
     padding: 25px 0;

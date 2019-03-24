@@ -3,8 +3,7 @@
     <GameHeader :current-player="currentPlayer" />
     <div class="board__content">
       <div class="board__scores">
-        <Scores />
-        <div style="text-align: left">{{ scores }}</div>
+        <Scores :scores="scores" />
       </div>
       <div class="board__cards">
         <CardsMatrix :cards="cards" :on-card-select="selectCard" :is-flipped="isCardFlipped" />
@@ -39,7 +38,7 @@ export default {
       return this.$store.state.game.currentPlayer || 1;
     },
     scores() {
-      return this.$store.state.game.scores.toString() || [].toString();
+      return this.$store.state.game.scores || [];
     },
     totalPairsCount() {
       return this.$store.state.settings.pairs;
