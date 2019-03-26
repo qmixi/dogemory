@@ -3,7 +3,7 @@
     <GameHeader :current-player="currentPlayer" />
     <div class="board__content">
       <div class="board__scores">
-        <Scores :scores="scores" />
+        <Scores :scores="scores" :current-player="currentPlayer" />
       </div>
       <div class="board__cards">
         <CardsMatrix :cards="cards" :on-card-select="selectCard" :is-flipped="isCardFlipped" />

@@ -14,7 +14,7 @@ export default {
   name: "Nav",
   methods: {
     setNewGame() {
-      this.$store.dispatch(INITIALIZE_NEW_GAME);
+      this.$store.commit(INITIALIZE_NEW_GAME);
       this.$router.push({ name: "new" });
     }
   }

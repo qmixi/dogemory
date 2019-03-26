@@ -1,5 +1,11 @@
 <template>
-  <button class="button" :class="{ 'button--large': large }" @click="onClick">{{ text }}</button>
+  <button
+    class="button"
+    :class="{ 'button--large': large, 'button--medium': medium }"
+    @click="onClick"
+  >
+    {{ text }}
+  </button>
 </template>
 
 <script>
@@ -11,6 +17,7 @@ export default {
       default: ""
     },
     large: Boolean,
+    medium: Boolean,
     onClick: {
       type: Function,
       default: () => {}
@@ -37,6 +44,12 @@ export default {
     padding: 12px 85px;
     border-radius: 25px;
     font-size: 20px;
+  }
+
+  &--medium {
+    padding: 8px 50px;
+    border-radius: 25px;
+    font-size: 18px;
   }
 
   &:hover {

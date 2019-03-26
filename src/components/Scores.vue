@@ -1,8 +1,13 @@
 <template>
   <div class="scores">
-    <div v-for="(score, index) in scores" :key="`scores-${index}`" class="scores__item">
+    <div
+      v-for="(score, index) in scores"
+      :key="`scores-${index}`"
+      class="scores__item"
+      :class="{ 'scores__item--active': currentPlayer === index + 1 }"
+    >
       <div class="scores__item-title">Player {{ index + 1 }}:</div>
-      <div class="scores__item-points">{{ score }} pts</div>
+      <div class="scores__item-points">{{ score }} pairs</div>
     </div>
   </div>
 </template>
@@ -14,6 +19,10 @@ export default {
     scores: {
       type: Array,
       default: () => [0, 0, 0]
+    },
+    currentPlayer: {
+      type: Number,
+      default: 1
     }
   }
 };
@@ -53,19 +62,23 @@ export default {
     position: absolute;
   }
 
-  &:nth-child(1):before {
+  &:nth-child(1):before,
+  &:nth-child(1):after {
     background: $red;
   }
 
-  &:nth-child(2):before {
+  &:nth-child(2):before,
+  &:nth-child(2):after {
     background: $orange;
   }
 
-  &:nth-child(3):before {
+  &:nth-child(3):before,
+  &:nth-child(3):after {
     background: $violet;
   }
 
-  &:nth-child(4):before {
+  &:nth-child(4):before,
+  &:nth-child(4):after {
     background: $blue;
   }
 
@@ -81,6 +94,21 @@ export default {
 
   &-points {
     font-weight: bold;
+  }
+
+  &:after {
+    content: "";
+    width: 0%;
+    display: block;
+    height: 2px;
+    position: absolute;
+    top: 31px;
+    left: 0px;
+    transition: all 0.35s ease-out;
+  }
+
+  &--active:after {
+    width: 100%;
   }
 }
 </style>

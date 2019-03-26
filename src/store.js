@@ -45,6 +45,7 @@ export default new Vuex.Store({
   },
   mutations: {
     [INITIALIZE_NEW_GAME](state) {
+      console.log("HEREEE");
       state.settings = initialSettings;
       state.game = initialGame;
     },
