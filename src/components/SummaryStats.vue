@@ -10,13 +10,15 @@
       </div>
       <div class="summary-stats__other">
         <div class="summary-stats__other-title">Other players results:</div>
-        <div
-          v-for="(score, index) in otherPlayers"
-          :key="`scores-${index}`"
-          class="summary-stats__item"
-        >
-          <div class="summary-stats__item-title">Player {{ index + 1 }}:</div>
-          <div class="summary-stats__item-points">{{ score }} pairs</div>
+        <div class="summary-stats__items">
+          <div
+            v-for="(score, index) in otherPlayers"
+            :key="`scores-${index}`"
+            class="summary-stats__item"
+          >
+            <div class="summary-stats__item-title">Player {{ index + 1 }}</div>
+            <div class="summary-stats__item-points">{{ score }} pairs</div>
+          </div>
         </div>
       </div>
     </div>
@@ -115,9 +117,18 @@ export default {
     }
   }
 
+  &__items {
+    padding: 0 0 0 25px;
+    font-size: 20px;
+  }
+
   &__item {
     display: flex;
+    justify-content: space-between;
     position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid $border-light;
 
     &:before {
       content: "";
@@ -150,7 +161,6 @@ export default {
     }
 
     &:not(:last-child) {
-      padding-bottom: 20px;
     }
 
     &-title {
