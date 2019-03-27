@@ -1,5 +1,11 @@
 <template>
-  <div class="cards">
+  <div
+    class="cards"
+    :class="{
+      'cards--small': cards.length < 17,
+      'cards--medium': cards.length > 16 && cards.length < 25
+    }"
+  >
     <div
       v-for="(card, index) in cards"
       :key="`card-${index}`"
@@ -51,6 +57,14 @@ export default {
   padding: 30px 0;
   position: relative;
   top: -100px;
+
+  &--small {
+    grid-template-columns: repeat(4, 125px);
+  }
+
+  &--medium {
+    grid-template-columns: repeat(6, 125px);
+  }
 }
 
 .card {
