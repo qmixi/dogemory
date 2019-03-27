@@ -60,10 +60,14 @@ export default {
 
   &--small {
     grid-template-columns: repeat(4, 125px);
+    margin: auto;
+    justify-content: center;
   }
 
   &--medium {
     grid-template-columns: repeat(6, 125px);
+    margin: auto;
+    justify-content: center;
   }
 }
 

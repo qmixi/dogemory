@@ -33,6 +33,7 @@ export default {
   position: fixed;
   top: 139px;
   left: 0;
+  z-index: 99;
 
   font-size: 21px;
   color: $text-dark;
