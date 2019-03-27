@@ -7,7 +7,7 @@
       :class="{ 'scores__item--active': currentPlayer === index + 1 }"
     >
       <div class="scores__item-title">Player {{ index + 1 }}:</div>
-      <div class="scores__item-points">{{ score }} pairs</div>
+      <div class="scores__item-points">{{ score }} {{ score === 1 ? "pair" : "pairs" }}</div>
     </div>
   </div>
 </template>
@@ -34,13 +34,13 @@ export default {
   top: 139px;
   left: 0;
 
-  font-size: 22px;
+  font-size: 21px;
   color: $text-dark;
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
 
   background: white;
-  padding: 30px 15px 30px 40px;
+  padding: 30px 15px 30px 35px;
   box-shadow: 0px 0px 61px 6px rgba(100, 100, 100, 0.17);
 
   &__item {
@@ -94,6 +94,8 @@ export default {
 
   &-points {
     font-weight: bold;
+    width: 83px;
+    text-align: left;
   }
 
   &:after {

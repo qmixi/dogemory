@@ -45,13 +45,12 @@ export default new Vuex.Store({
   },
   mutations: {
     [INITIALIZE_NEW_GAME](state) {
-      console.log("HEREEE");
       state.settings = initialSettings;
       state.game = initialGame;
     },
     [SET_SETTINGS](state, payload) {
       state.settings = payload;
-      state.game = { ...initialGame, scores: new Array(payload.players).fill(0) };
+      state.game = { ...initialGame, scores: new Array(payload.players).fill(0), matchedPairs: [] };
     },
     [SET_PAIRS](state, pairs) {
       state.game.pairs = pairs;

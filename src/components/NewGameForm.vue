@@ -9,7 +9,7 @@
     <div class="new-form__stage">
       <label class="new-form__label">Pairs:</label>
       <div class="new-form__item">
-        <vue-slider v-model="pairs" :min="4" :max="30" :interval="2" :marks="true" />
+        <vue-slider v-model="pairs" :min="4" :max="32" :interval="4" :marks="true" />
       </div>
     </div>
     <div class="new-form__stage">

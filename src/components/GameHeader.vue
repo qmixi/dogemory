@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import { toWords } from "number-to-words";
 import Title from "@/components/Title";
 
 export default {
@@ -21,7 +20,13 @@ export default {
   },
   computed: {
     title() {
-      return `Player ${toWords(this.currentPlayer)}'s turn`;
+      return `Player ${this.currentPlayer} - your turn! ${this.getUserEmoji()}`;
+    }
+  },
+  methods: {
+    getUserEmoji() {
+      const emojis = ["👨🏻‍🚀", "🎅🏿", "👨‍🎤", "🧙"];
+      return emojis[this.currentPlayer - 1];
     }
   }
 };

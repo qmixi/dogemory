@@ -3,7 +3,7 @@
     <div v-if="otherPlayers.length">
       <div class="summary-stats__header">
         <div class="summary-stats__header-title">The winner is</div>
-        <div class="summary-stats__header-player">player {{ winner }}</div>
+        <div class="summary-stats__header-player">player {{ winner }},</div>
         <div class="summary-stats__header-player">
           finding <b>{{ winnerScore }}</b> pairs!
         </div>
