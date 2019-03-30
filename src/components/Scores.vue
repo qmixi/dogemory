@@ -6,7 +6,11 @@
       class="scores__item"
       :class="{ 'scores__item--active': currentPlayer === index + 1 }"
     >
-      <div class="scores__item-title">Player {{ index + 1 }}:</div>
+      <div class="scores__item-title">
+        <i class="scores__item-point" :style="{ background: score.color }"></i>
+        <i class="scores__item-line" :style="{ background: score.color }"></i>
+        Player {{ index + 1 }}:
+      </div>
       <div class="scores__item-points">
         {{ score.pairs }} {{ score.pairs === 1 ? "pair" : "pairs" }}
       </div>
@@ -55,34 +59,14 @@ export default {
   display: flex;
   position: relative;
 
-  &:before {
-    content: "";
+  &-point {
+    display: block;
     width: 10px;
     height: 10px;
     border-radius: 50%;
     left: -22px;
     top: 9px;
     position: absolute;
-  }
-
-  &:nth-child(1):before,
-  &:nth-child(1):after {
-    background: $red;
-  }
-
-  &:nth-child(2):before,
-  &:nth-child(2):after {
-    background: $orange;
-  }
-
-  &:nth-child(3):before,
-  &:nth-child(3):after {
-    background: $violet;
-  }
-
-  &:nth-child(4):before,
-  &:nth-child(4):after {
-    background: $blue;
   }
 
   &:not(:last-child) {
@@ -101,8 +85,7 @@ export default {
     text-align: left;
   }
 
-  &:after {
-    content: "";
+  &-line {
     width: 0%;
     display: block;
     height: 2px;
@@ -112,7 +95,7 @@ export default {
     transition: all 0.35s ease-out;
   }
 
-  &--active:after {
+  &--active .scores__item-line {
     width: 100%;
   }
 }

@@ -18,7 +18,10 @@
             :key="`scores-${index}`"
             class="summary-stats__item"
           >
-            <div class="summary-stats__item-title">Player {{ score.player }}</div>
+            <div class="summary-stats__item-title">
+              <i class="summary-stats__item-point" :style="{ background: score.color }"></i>
+              Player {{ score.player }}
+            </div>
             <div class="summary-stats__item-points">{{ score.pairs }} pairs</div>
           </div>
         </div>
@@ -46,7 +49,6 @@ export default {
   },
   computed: {
     winner() {
-      // return this.scoresthis.getWinnerIndex(this.scores) + 1;
       return maxBy(this.scores, "pairs");
     },
     otherPlayers() {
@@ -130,37 +132,14 @@ export default {
     margin-bottom: 10px;
     border-bottom: 1px solid $border-light;
 
-    &:before {
-      content: "";
+    &-point {
+      display: block;
       width: 10px;
       height: 10px;
       border-radius: 50%;
       left: -22px;
       top: 9px;
       position: absolute;
-    }
-
-    &:nth-child(1):before,
-    &:nth-child(1):after {
-      background: $red;
-    }
-
-    &:nth-child(2):before,
-    &:nth-child(2):after {
-      background: $orange;
-    }
-
-    &:nth-child(3):before,
-    &:nth-child(3):after {
-      background: $violet;
-    }
-
-    &:nth-child(4):before,
-    &:nth-child(4):after {
-      background: $blue;
-    }
-
-    &:not(:last-child) {
     }
 
     &-title {
