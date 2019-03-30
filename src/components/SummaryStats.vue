@@ -3,9 +3,11 @@
     <div v-if="otherPlayers.length">
       <div class="summary-stats__header">
         <div class="summary-stats__header-title">The winner is</div>
-        <div class="summary-stats__header-player">player {{ winner }},</div>
-        <div class="summary-stats__header-player">
-          finding <b>{{ winnerScore }}</b> pairs!
+        <div class="summary-stats__header-player" :style="{ color: winner.color }">
+          Player {{ winner.player }},
+        </div>
+        <div class="summary-stats__header-pairs">
+          finding <b>{{ winner.pairs }}</b> pairs!
         </div>
       </div>
       <div class="summary-stats__other">
@@ -16,8 +18,8 @@
             :key="`scores-${index}`"
             class="summary-stats__item"
           >
-            <div class="summary-stats__item-title">Player {{ index + 1 }}</div>
-            <div class="summary-stats__item-points">{{ score }} pairs</div>
+            <div class="summary-stats__item-title">Player {{ score.player }}</div>
+            <div class="summary-stats__item-points">{{ score.pairs }} pairs</div>
           </div>
         </div>
       </div>
@@ -44,10 +46,8 @@ export default {
   },
   computed: {
     winner() {
-      return this.getWinnerIndex(this.scores) + 1;
-    },
-    winnerScore() {
-      return this.scores[this.getWinnerIndex(this.scores)];
+      // return this.scoresthis.getWinnerIndex(this.scores) + 1;
+      return maxBy(this.scores, "pairs");
     },
     otherPlayers() {
       const scores = [...this.scores];
@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     getWinnerIndex(scores) {
-      return scores.indexOf(maxBy(this.scores));
+      return scores.indexOf(maxBy(this.scores, "pairs"));
     },
     startNewGame() {
       this.$store.commit(INITIALIZE_NEW_GAME);

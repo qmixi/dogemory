@@ -4,6 +4,8 @@ import VuexPersistence from "vuex-persist";
 import axios from "axios";
 import { uniqueId, shuffle } from "lodash";
 
+import { colors } from "@/consts";
+
 import {
   FETCH_BREEDS,
   SET_BREEDS,
@@ -13,6 +15,7 @@ import {
   SET_SETTINGS,
   SET_NEXT_PLAYER,
   SET_MATCHED_PAIR,
+  SET_EMPTY_SCORES,
   INCREASE_CURRENT_PLAYER_SCORE
 } from "@/types";
 
@@ -50,13 +53,22 @@ export default new Vuex.Store({
     },
     [SET_SETTINGS](state, payload) {
       state.settings = payload;
-      state.game = { ...initialGame, scores: new Array(payload.players).fill(0), matchedPairs: [] };
+      state.game = { ...initialGame, matchedPairs: [] };
     },
     [SET_PAIRS](state, pairs) {
       state.game.pairs = pairs;
     },
     [SET_BREEDS](state, breeds) {
       state.breeds = [...state.breeds, ...Object.keys(breeds)];
+    },
+    [SET_EMPTY_SCORES](state, players) {
+      for (let i = 0; i < players; i++) {
+        state.game.scores.push({
+          player: i + 1,
+          pairs: 0,
+          color: colors[i]
+        });
+      }
     },
     [SET_MATCHED_PAIR](state, pairId) {
       state.game.matchedPairs.push(pairId);
@@ -69,11 +81,10 @@ export default new Vuex.Store({
       }
     },
     [INCREASE_CURRENT_PLAYER_SCORE](state) {
-      const scores = [...state.game.scores];
-      const currentPlayerScoreIndex = state.game.currentPlayer - 1;
-      const newPlayerScore = ++scores[currentPlayerScoreIndex];
-      scores[currentPlayerScoreIndex] = newPlayerScore;
-      state.game.scores = scores;
+      const currentPlayerScore = state.game.scores.find(
+        score => score.player === state.game.currentPlayer
+      );
+      currentPlayerScore.pairs++;
     }
   },
   actions: {
@@ -96,6 +107,7 @@ export default new Vuex.Store({
       const pairs = shuffle([...data, ...data]);
 
       commit(SET_PAIRS, pairs);
+      commit(SET_EMPTY_SCORES, settings.players);
     },
     async [FETCH_BREEDS]({ commit }) {
       const res = await axios.get("https://dog.ceo/api/breeds/list/all");

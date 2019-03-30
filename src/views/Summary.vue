@@ -28,7 +28,6 @@ export default {
   },
   computed: {
     scores() {
-      console.log("this.$store.state.game.scores", this.$store.state.game.scores);
       return this.$store.state.game.scores || [];
     }
   },

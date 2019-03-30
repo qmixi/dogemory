@@ -7,7 +7,9 @@
       :class="{ 'scores__item--active': currentPlayer === index + 1 }"
     >
       <div class="scores__item-title">Player {{ index + 1 }}:</div>
-      <div class="scores__item-points">{{ score }} {{ score === 1 ? "pair" : "pairs" }}</div>
+      <div class="scores__item-points">
+        {{ score.pairs }} {{ score.pairs === 1 ? "pair" : "pairs" }}
+      </div>
     </div>
   </div>
 </template>
