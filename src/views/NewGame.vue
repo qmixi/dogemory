@@ -50,7 +50,11 @@ export default {
 .new-game {
   &__header {
     background: $blue;
-    padding: 30px 20px 130px 20px;
+    padding: 20px 8px;
+
+    @media screen and (min-width: $breakpoint-medium) {
+      padding: 30px 20px 130px 20px;
+    }
   }
 
   &__subtitle {
@@ -62,8 +66,10 @@ export default {
   }
 
   &__form {
-    position: relative;
-    top: -85px;
+    @media screen and (min-width: $breakpoint-medium) {
+      top: -85px;
+      position: relative;
+    }
   }
 }
 </style>

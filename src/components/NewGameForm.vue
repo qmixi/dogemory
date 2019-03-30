@@ -72,9 +72,13 @@ export default {
   max-width: 500px;
   margin: auto;
   background: white;
-  padding: 30px;
+  padding: 10px 20px;
   text-align: left;
   box-shadow: 0px 0px 61px 6px rgba(100, 100, 100, 0.17);
+
+  @media screen and (min-width: $breakpoint-medium) {
+    padding: 30px;
+  }
 
   &__stage {
     padding: 25px 0;
