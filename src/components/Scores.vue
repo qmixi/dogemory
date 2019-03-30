@@ -36,10 +36,12 @@ export default {
 
 <style scoped lang="scss">
 .scores {
-  position: fixed;
-  top: 139px;
-  left: 0;
-  z-index: 99;
+  @media screen and (min-width: $breakpoint-medium) {
+    position: fixed;
+    top: 139px;
+    left: 0;
+    z-index: 99;
+  }
 
   font-size: 21px;
   color: $text-dark;

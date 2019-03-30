@@ -35,6 +35,10 @@ export default {
 <style scoped lang="scss">
 .game-header {
   background: $blue;
-  padding: 20px 20px 110px 20px;
+  padding: 20px;
+
+  @media screen and (min-width: $breakpoint-medium) {
+    padding: 20px 20px 110px 20px;
+  }
 }
 </style>

@@ -69,7 +69,7 @@ export default {
 
 <style lang="scss">
 .new-form {
-  width: 500px;
+  max-width: 500px;
   margin: auto;
   background: white;
   padding: 30px;

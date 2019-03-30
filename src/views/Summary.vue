@@ -1,12 +1,12 @@
 <template>
-  <div class="new-game">
-    <div class="new-game__header">
+  <div class="summary">
+    <div class="summary__header">
       <Title text="Game Over!" color="white" />
-      <div class="new-game__subtitle">
+      <div class="summary__subtitle">
         <Subtitle text="Good job and let's play again dude. 🖖" color="white" />
       </div>
     </div>
-    <div class="new-game__form">
+    <div class="summary__form">
       <SummaryStats :scores="scores" />
     </div>
   </div>
@@ -44,10 +44,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.new-game {
+.summary {
   &__header {
     background: $blue;
-    padding: 30px 20px 130px 20px;
+    padding: 20px 8px;
+
+    @media screen and (min-width: $breakpoint-medium) {
+      padding: 30px 20px 130px 20px;
+    }
   }
 
   &__subtitle {
@@ -59,8 +63,10 @@ export default {
   }
 
   &__form {
-    position: relative;
-    top: -85px;
+    @media screen and (min-width: $breakpoint-medium) {
+      top: -85px;
+      position: relative;
+    }
   }
 }
 </style>

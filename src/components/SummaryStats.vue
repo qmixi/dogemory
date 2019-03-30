@@ -71,21 +71,29 @@ export default {
 
 <style scoped lang="scss">
 .summary-stats {
-  width: 500px;
+  max-width: 500px;
   margin: auto;
   background: white;
-  padding: 30px;
+  padding: 50px 10px;
   text-align: left;
   box-shadow: 0px 0px 61px 6px rgba(100, 100, 100, 0.17);
   color: $text-dark;
 
+  @media screen and (min-width: $breakpoint-medium) {
+    padding: 30px;
+  }
+
   &__header {
     display: flex;
-    font-size: 22px;
+    font-size: 18px;
     justify-content: center;
     border-bottom: 1px solid $blue;
     padding-bottom: 20px;
     position: relative;
+
+    @media screen and (min-width: $breakpoint-medium) {
+      font-size: 22px;
+    }
 
     &:before,
     &:after {
@@ -96,11 +104,22 @@ export default {
     }
 
     &:before {
-      left: 12px;
+      left: 50%;
+      transform: translate(-50%, 0);
+      top: -43px;
+      font-size: 35px;
+
+      @media screen and (min-width: $breakpoint-medium) {
+        left: 12px;
+      }
     }
 
     &:after {
-      right: 12px;
+      display: none;
+
+      @media screen and (min-width: $breakpoint-medium) {
+        right: 12px;
+      }
     }
 
     &-player {
@@ -114,14 +133,22 @@ export default {
 
     &-title {
       padding-bottom: 20px;
-      font-size: 20px;
+      font-size: 18px;
       color: $text-light;
+
+      @media screen and (min-width: $breakpoint-medium) {
+        font-size: 20px;
+      }
     }
   }
 
   &__items {
     padding: 0 0 0 25px;
-    font-size: 20px;
+    font-size: 18px;
+
+    @media screen and (min-width: $breakpoint-medium) {
+      font-size: 20px;
+    }
   }
 
   &__item {

@@ -21,7 +21,11 @@ export default {
 <style scoped lang="scss">
 .subtitle {
   color: white;
-  font-size: 25px;
+  font-size: 19px;
   font-weight: 300;
+
+  @media screen and (min-width: $breakpoint-small) {
+    font-size: 25px;
+  }
 }
 </style>

@@ -2,8 +2,8 @@
   <div
     class="cards"
     :class="{
-      'cards--small': cards.length < 17,
-      'cards--medium': cards.length > 16 && cards.length < 25
+      'cards--small': cards.length < 17
+      // 'cards--medium': cards.length > 16 && cards.length < 25
     }"
   >
     <div
@@ -52,22 +52,28 @@ export default {
 .cards {
   display: grid;
   grid-gap: 25px;
-  grid-template-columns: repeat(auto-fill, 125px);
-  margin-left: 250px;
+  grid-template-columns: repeat(auto-fill, 85px);
   padding: 30px 0;
   position: relative;
-  top: -100px;
+  justify-content: center;
 
-  &--small {
-    grid-template-columns: repeat(4, 125px);
-    margin: auto;
-    justify-content: center;
-  }
+  @media screen and (min-width: $breakpoint-medium) {
+    justify-content: left;
+    top: -100px;
+    margin-left: 250px;
+    grid-template-columns: repeat(auto-fill, 125px);
 
-  &--medium {
-    grid-template-columns: repeat(6, 125px);
-    margin: auto;
-    justify-content: center;
+    &--small {
+      grid-template-columns: repeat(4, 125px);
+      margin: auto;
+      justify-content: center;
+    }
+
+    &--medium {
+      grid-template-columns: repeat(6, 125px);
+      margin: auto;
+      justify-content: center;
+    }
   }
 }
 
@@ -85,8 +91,14 @@ export default {
 .card,
 .card__placeholder,
 .card__img {
-  width: 125px;
-  height: 125px;
+  width: 85px;
+  height: 85px;
+
+  @media screen and (min-width: $breakpoint-medium) {
+    justify-content: left;
+    width: 125px;
+    height: 125px;
+  }
 }
 
 .card__flipper {
@@ -114,6 +126,11 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 12px;
+
+  @media screen and (min-width: $breakpoint-medium) {
+    font-size: 15px;
+  }
 }
 
 .card__img {

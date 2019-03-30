@@ -20,9 +20,13 @@ export default {
 
 <style scoped lang="scss">
 .title {
-  font-size: 32px;
+  font-size: 23px;
   color: $text-dark;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
+
+  @media screen and (min-width: $breakpoint-small) {
+    font-size: 32px;
+  }
 }
 </style>

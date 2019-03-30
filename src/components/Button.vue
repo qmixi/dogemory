@@ -41,9 +41,13 @@ export default {
   outline: none;
 
   &--large {
-    padding: 12px 85px;
+    padding: 12px 50px;
     border-radius: 25px;
     font-size: 20px;
+
+    @media screen and (min-width: $breakpoint-small) {
+      padding: 12px 85px;
+    }
   }
 
   &--medium {
