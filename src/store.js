@@ -53,7 +53,7 @@ export default new Vuex.Store({
     },
     [SET_SETTINGS](state, payload) {
       state.settings = payload;
-      state.game = { ...initialGame, matchedPairs: [] };
+      state.game = { ...initialGame, scores: [], matchedPairs: [] };
     },
     [SET_PAIRS](state, pairs) {
       state.game.pairs = pairs;
