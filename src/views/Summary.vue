@@ -20,8 +20,6 @@ import Title from "@/components/Title.vue";
 import Subtitle from "@/components/Subtitle.vue";
 import SummaryStats from "@/components/SummaryStats.vue";
 
-import { FETCH_BREEDS, START_NEW_GAME } from "@/types";
-
 export default {
   name: "Home",
   components: {
@@ -32,15 +30,6 @@ export default {
   computed: {
     scores() {
       return this.$store.state.game.scores || [];
-    }
-  },
-  beforeMount() {
-    this.$store.dispatch(FETCH_BREEDS);
-  },
-  methods: {
-    onGameStart(players, pairs, breed) {
-      this.$store.dispatch(START_NEW_GAME, { players, pairs, breed });
-      this.$router.push({ name: "board" });
     }
   }
 };

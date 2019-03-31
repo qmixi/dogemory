@@ -59,7 +59,7 @@ export default new Vuex.Store({
       state.game.pairs = pairs;
     },
     [SET_BREEDS](state, breeds) {
-      state.breeds = [...state.breeds, ...Object.keys(breeds)];
+      state.breeds = Object.keys(breeds);
     },
     [SET_EMPTY_SCORES](state, players) {
       for (let i = 0; i < players; i++) {
