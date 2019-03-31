@@ -9,6 +9,11 @@
         <CardsMatrix :cards="cards" :on-card-select="selectCard" :is-flipped="isCardFlipped" />
       </div>
     </div>
+    <PlayerTurnInfo
+      v-if="isInfoVisible"
+      :text="`Player ${currentPlayer}'s turn!`"
+      :color="getCurrentPlayerColor()"
+    />
   </div>
 </template>
 
@@ -16,15 +21,17 @@
 import GameHeader from "@/components/GameHeader";
 import CardsMatrix from "@/components/CardsMatrix";
 import Scores from "@/components/Scores";
+import PlayerTurnInfo from "@/components/PlayerTurnInfo";
 
 import { SET_NEXT_PLAYER, INCREASE_CURRENT_PLAYER_SCORE, SET_MATCHED_PAIR } from "@/types";
 
 export default {
   name: "Home",
-  components: { GameHeader, CardsMatrix, Scores },
+  components: { GameHeader, CardsMatrix, Scores, PlayerTurnInfo },
   data() {
     return {
-      selectedCards: []
+      selectedCards: [],
+      isInfoVisible: false
     };
   },
   computed: {
@@ -74,7 +81,13 @@ export default {
       this.selectedCards = [];
     },
     changePlayer() {
+      setTimeout(() => {
+        this.isInfoVisible = true;
+      }, 1000);
       this.$store.commit(SET_NEXT_PLAYER);
+      setTimeout(() => {
+        this.isInfoVisible = false;
+      }, 2500);
     },
     increaseCurrentPlayerScore() {
       this.$store.commit(INCREASE_CURRENT_PLAYER_SCORE);
@@ -89,6 +102,9 @@ export default {
     },
     isCardFlipped(index, id) {
       return this.matchedPairs.includes(id) || this.selectedCards.includes(index);
+    },
+    getCurrentPlayerColor() {
+      return this.scores.find(score => score.player === this.currentPlayer).color;
     }
   }
 };

@@ -1,11 +1,5 @@
 <template>
-  <div
-    class="cards"
-    :class="{
-      'cards--small': cards.length < 17
-      // 'cards--medium': cards.length > 16 && cards.length < 25
-    }"
-  >
+  <div class="cards" :class="{ 'cards--small': cards.length < 17 }">
     <div
       v-for="(card, index) in cards"
       :key="`card-${index}`"
