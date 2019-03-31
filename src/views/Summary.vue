@@ -3,7 +3,10 @@
     <div class="summary__header">
       <Title text="Game Over!" color="white" />
       <div class="summary__subtitle">
-        <Subtitle text="Good job and let's play again dude. 🖖" color="white" />
+        <Subtitle
+          :text="`Good job and let's play again ${scores.length > 1 ? 'guys' : 'dude'}. 🖖`"
+          color="white"
+        />
       </div>
     </div>
     <div class="summary__form">
