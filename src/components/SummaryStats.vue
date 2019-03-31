@@ -110,7 +110,9 @@ export default {
       font-size: 35px;
 
       @media screen and (min-width: $breakpoint-medium) {
-        left: 12px;
+        left: 25px;
+        top: -4px;
+        font-size: 32px;
       }
     }
 
@@ -118,6 +120,7 @@ export default {
       display: none;
 
       @media screen and (min-width: $breakpoint-medium) {
+        display: block;
         right: 12px;
       }
     }
