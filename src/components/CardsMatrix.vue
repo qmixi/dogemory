@@ -51,13 +51,14 @@ export default {
 <style scoped lang="scss">
 .cards {
   display: grid;
-  grid-gap: 25px;
-  grid-template-columns: repeat(auto-fill, 85px);
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fill, 90px);
   padding: 30px 0;
   position: relative;
   justify-content: center;
 
   @media screen and (min-width: $breakpoint-medium) {
+    grid-gap: 25px;
     justify-content: left;
     top: -100px;
     margin-left: 250px;
@@ -91,8 +92,8 @@ export default {
 .card,
 .card__placeholder,
 .card__img {
-  width: 85px;
-  height: 85px;
+  width: 90px;
+  height: 90px;
 
   @media screen and (min-width: $breakpoint-medium) {
     justify-content: left;
