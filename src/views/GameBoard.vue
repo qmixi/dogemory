@@ -10,7 +10,7 @@
       </div>
     </div>
     <PlayerTurnInfo
-      v-if="isInfoVisible"
+      v-if="playersCount > 1 && isInfoVisible"
       :text="`Player ${currentPlayer}'s turn!`"
       :color="getCurrentPlayerColor()"
     />
@@ -43,6 +43,9 @@ export default {
     },
     currentPlayer() {
       return this.$store.state.game.currentPlayer || 1;
+    },
+    playersCount() {
+      return this.$store.state.settings.players;
     },
     scores() {
       return this.$store.state.game.scores || [];
