@@ -22,6 +22,12 @@
           max-height="200px"
         ></v-select>
       </div>
+      <div class="new-form__stage new-form__stage-notification">
+        <label class="new-form__label">
+          <input v-model="showNotification" type="checkbox" class="switcher" />
+          Show notification on player change
+        </label>
+      </div>
     </div>
     <div class="new-form__submit">
       <Button text="Start game" large :on-click="startGame" />
@@ -56,12 +62,13 @@ export default {
     return {
       players: 1,
       pairs: 4,
-      breed: "Random"
+      breed: "Random",
+      showNotification: true
     };
   },
   methods: {
     startGame() {
-      this.onGameStart(parseInt(this.players, 10), this.pairs, this.breed);
+      this.onGameStart(parseInt(this.players, 10), this.pairs, this.breed, this.showNotification);
     }
   }
 };
@@ -82,6 +89,11 @@ export default {
 
   &__stage {
     padding: 25px 0;
+
+    input[type="checkbox"] {
+      font-size: 26px;
+      margin-right: 10px;
+    }
   }
 
   &__label {

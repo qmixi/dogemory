@@ -10,9 +10,8 @@
       </div>
     </div>
     <PlayerTurnInfo
-      v-if="playersCount > 1 && isInfoVisible"
+      v-if="playersCount > 1 && showNotification && isInfoVisible"
       :text="`Player ${currentPlayer}'s turn!`"
-      :color="getCurrentPlayerColor()"
     />
   </div>
 </template>
@@ -52,6 +51,9 @@ export default {
     },
     totalPairsCount() {
       return this.$store.state.settings.pairs;
+    },
+    showNotification() {
+      return this.$store.state.settings.showNotification;
     }
   },
   methods: {

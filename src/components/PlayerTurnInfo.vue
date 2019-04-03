@@ -51,6 +51,7 @@ export default {
   opacity: 0;
   visibility: hidden;
   animation: show 1.2s ease-out;
+  color: $blue;
 
   &--visible {
     transform: translate(-50%, -50%) scale(0.1);

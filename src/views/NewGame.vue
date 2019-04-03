@@ -38,8 +38,8 @@ export default {
     this.$store.dispatch(FETCH_BREEDS);
   },
   methods: {
-    onGameStart(players, pairs, breed) {
-      this.$store.dispatch(START_NEW_GAME, { players, pairs, breed });
+    onGameStart(players, pairs, breed, showNotification) {
+      this.$store.dispatch(START_NEW_GAME, { players, pairs, breed, showNotification });
       this.$router.push({ name: "board" });
     }
   }
