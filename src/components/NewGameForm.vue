@@ -61,7 +61,7 @@ export default {
   data() {
     return {
       players: "2",
-      pairs: 4,
+      pairs: 8,
       breed: "Random",
       showNotification: true
     };
