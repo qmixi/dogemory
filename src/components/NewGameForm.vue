@@ -22,7 +22,7 @@
           max-height="200px"
         ></v-select>
       </div>
-      <div class="new-form__stage new-form__stage-notification">
+      <div v-if="players > 1" class="new-form__stage new-form__stage-notification">
         <label class="new-form__label">
           <input v-model="showNotification" type="checkbox" class="switcher" />
           Show notification on player change
@@ -60,7 +60,7 @@ export default {
   },
   data() {
     return {
-      players: 1,
+      players: "2",
       pairs: 4,
       breed: "Random",
       showNotification: true
