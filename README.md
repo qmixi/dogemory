@@ -1,4 +1,5 @@
-# dogemory
+# Dogemory
+##Stretch your brain with your favorite doggos!
 
 ## Project setup
 ```
