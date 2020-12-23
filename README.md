@@ -3,7 +3,7 @@
 ![alt text](https://repository-images.githubusercontent.com/174671635/b13b9500-763f-11e9-8577-523990d7c640)
 
 ## Demo
-http://dogemory.pl
+https://dogemory.netlify.app/
 
 ## Project setup
 ```
